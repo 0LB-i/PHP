@@ -85,3 +85,42 @@ echo "<pre>";
         $null
     ]);
 echo "</pre>";
+
+
+fullStackPHPClassSession("Exercício",__LINE__);
+/*
+1 - Crie dois objetos com os atributos nome e idade.
+Preencha os atributos dos dois objetos e em seguida
+faça um teste mostrando qual é a pessoa que possui a idade mais avançada
+*/
+
+$pessoa1 = new stdClass;
+$pessoa1 -> nome = "Gabriel";
+$pessoa1 -> idade = 22;
+
+$pessoa2 = new stdClass;
+$pessoa2->nome = "Pedro";
+$pessoa2->idade = 50;
+
+if($pessoa1->idade > $pessoa2->idade){
+    echo $pessoa1->nome . " é a pessoa mais velha";
+}else if($pessoa2->idade > $pessoa1->idade){
+    echo $pessoa2->nome . " é a pessoa mais velha";
+}else{
+    echo "Ambos têm a mesma idade";
+}
+
+echo "<br>";
+
+/*
+    2 - Dado o seguinte texto: <p>Olá <span><i>mundo</i></span></p>, realize um comando ECHO
+    que consiga mostra o testo sem as marcações HTMl.
+*/
+
+$code2 = "<p>Olá <span><i>mundo</i></span></p>";
+
+$cleanCode = call_user_func("strip_tags", $code2);
+
+echo "<br>";
+
+echo $cleanCode;
