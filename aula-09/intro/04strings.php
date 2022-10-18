@@ -56,12 +56,30 @@ echo "<br>";
  */
 fullStackPHPClassSession("conversão de caixa", __LINE__);
 
+$curso = "TÉCNICO em informárica";
+
+var_dump([
+    "strtoupper" => strtoupper($curso),
+    "mb_strtoupper" => mb_strtoupper($curso),
+    "strtolower" => strtolower($curso),
+    "mb_strtolower" => mb_strtolower($curso),
+    "mb_convert_case UPPER" => mb_convert_case($curso, MB_CASE_UPPER),
+    "mb_convert_case LOWER" => mb_convert_case($curso, MB_CASE_LOWER),
+    "mb_convert_case TITLE" => mb_convert_case($curso, MB_CASE_TITLE),
+]);
 
 /**
  * [ substituição ] multibyte and replace
  */
 fullStackPHPClassSession("substituição", __LINE__);
 
+$substituicao = "Progrmação para Internet";
+
+echo "<h5>{$substituicao}</h5>";
+
+echo "<h5>" . str_replace("Internet","Mobile", $substituicao) . "</h5>";
+
+echo "<h5>" . str_replace(array("Programação", "Internet"), array("Desenvolvimento", "Mobile"), $substituicao) . "</h5>";
 
 /**
  * [ parse string ] parse_str | mb_parse_str
