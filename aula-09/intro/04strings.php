@@ -73,7 +73,7 @@ var_dump([
  */
 fullStackPHPClassSession("substituição", __LINE__);
 
-$substituicao = "Progrmação para Internet";
+$substituicao = "Programação para Internet";
 
 echo "<h5>{$substituicao}</h5>";
 
