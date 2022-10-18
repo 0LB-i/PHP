@@ -7,6 +7,49 @@ fullStackPHPClassName("Funções para strings");
  */
 fullStackPHPClassSession("strings e multibyte", __LINE__);
 
+$curso = "Técnico em Informática";
+
+var_dump([
+    "string" => $curso,
+    "strlen" => strlen($curso), //conta todos os caracteres ínclusive a acentuação
+    "mb_strlen" => mb_strlen($curso), //conta todos os caracteres
+    "substr" => substr($curso, 12),
+    "mb_substr" => mb_substr($curso, 12),
+    "strtoupper" => strtoupper($curso),
+    "mb_strtoupper" => mb_strtoupper($curso),
+    "strtolower" => strtolower($curso),
+    "mb_strtolower" => mb_strtolower($curso),
+]);
+
+/*
+    Exercício
+    1 - Crie um vetor com 5 palavras e através de um laço de repetição, identifique a qauntidade
+    de letras de cada palavra
+
+    2 - Crie um laço de repetição que trasnform cada palavra em maiúsculo
+ */
+
+ $palavras = array('Casa','Pedra','Faca','Árvore','Bola');
+echo "Contador de aracteres";
+echo "<br> <br>";
+
+ for ($i=0; $i < count($palavras); $i++) { 
+    echo $palavras[$i] . " = " . mb_strlen($palavras[$i]) . "<br>";
+ }
+
+echo "<br>";
+echo "Palavras em Maiúsculo";
+echo "<br> <br>";
+
+ for ($i=0; $i < count($palavras); $i++) { 
+    echo $palavras[$i] . " = " . mb_strtoupper($palavras[$i]) . "<br>"; 
+ }
+
+echo "<br>";
+echo "Mesma coisa só que com While";
+echo "<br>";
+
+
 
 /**
  * [ conversão de caixa ] https://php.net/manual/en/function.mb-convert-case.php
