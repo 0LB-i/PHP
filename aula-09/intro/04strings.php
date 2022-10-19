@@ -85,3 +85,12 @@ echo "<h5>" . str_replace(array("Programação", "Internet"), array("Desenvolvim
  * [ parse string ] parse_str | mb_parse_str
  */
 fullStackPHPClassSession("parse string", __LINE__);
+
+$site = "https://www.univates.br/ead/?orig=eadga2023AI&utm_source=googles-ads&utm_medium=pesquisa&utm_campaign=EAD-2023AI&gclid=Cj0KCQjwnbmaBhD-ARIsAGTPcfVTOywte9fwKEHGVBB6W1vEUKeYd9Oyw-W_LJ4CgoLzEQlzp_F5uCwaAtIWEALw_wcB";
+
+mb_parse_str($site, $siteComParametro);
+
+var_dump([
+    "site" => $site,
+    "parametros" => $siteComParametros,
+]);
