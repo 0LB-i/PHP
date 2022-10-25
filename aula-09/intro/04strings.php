@@ -92,5 +92,5 @@ mb_parse_str($site, $siteComParametro);
 
 var_dump([
     "site" => $site,
-    "parametros" => $siteComParametros,
+    "parametros" => $siteComParametro,
 ]);
