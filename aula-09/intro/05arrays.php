@@ -87,6 +87,26 @@ var_dump($vetor_Reverse);
  */
 fullStackPHPClassSession("verificação", __LINE__);
 
+var_dump(
+    array_keys($array),
+    array_values($array)
+);
+
+echo "<h5>Verificar se existe PHP dentro do array</h5>";
+if(in_array("PHP", $array)){
+    echo "TEM PHP!";
+}
+
+$separator = ", ";
+
+//implode
+$arrayToString = implode($separator, $array);
+
+echo "<h4>Array em String: " . $arrayToString . "</h4>";
+
+//explode
+$arrayDeNovo = explode($separator, $arrayToString);
+echo var_dump($arrayDeNovo);
 
 /**
  * [ exemplo prático ] um template view | implode
