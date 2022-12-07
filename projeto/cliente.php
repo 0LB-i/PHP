@@ -42,20 +42,42 @@ if (isset($_GET['id'])) {
 
     <?php include('componentes/js.php') ?>
 
+    <style> 
+        .btn{
+            margin: 10px 10px 0 0;
+        }
+    </style>
+
    
 </head>
 <body>
     
     <div class="container">
+        <?php include('menu.php') ?>
+        
         <div class="row">
             <div class="col-md-12">
-                <?php include('menu.php') ?>
 
-                    <label>Nome</label>
-                    <input type="text" class="form-control" value="<?php echo ($cliente != null ? $cliente['nome']:'') ?>">
+                    <form method="post" action="action/actions.php?tipo=cliente">
 
+                        <input type="hidden" class="form-control" name="id" 
+                        value="<?php echo ($cliente != null ? $cliente['id'] : '') ?>">
 
-                <button class="btn btn-primary" onclick="confirmar_logout()">SAIR</button>
+                        <label>Nome</label>
+                        <input type="text" class="form-control" 
+                        name="nome" placeholder="Nome"
+                        value="<?php echo ($cliente != null ? $cliente['nome']:'') ?>">
+
+                        <label>E-mail</label>
+                        <input type="email" class="form-control"
+                        name="email" placeholder="E-mail"
+                        value="<?php echo ($cliente != null ? $cliente['email']:'') ?>">
+
+                        <input class="btn btn-warning" value="Limpar" type="reset">
+                        <button class="btn btn-primary" type="submit">Salvar</button>
+                    </form>
+
+                    <button class="btn btn-primary" onclick="confirmar_logout()">SAIR</button>
             </div>
         </div>
     </div>    
