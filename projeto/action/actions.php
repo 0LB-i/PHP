@@ -74,8 +74,47 @@ if($tipo == 'cliente'){
         }
     }   
 
-} else if($tipo == 'cidade'){
-    
+} else if($tipo == 'cidades'){
+    $cidade = $_POST["cidade"];
+    $id = $_POST["id"];
+    $sigla_estado = $_POST["sigla_estado"];
+
+    if(!isset($cidade) || $cidade == ''){
+        $_SESSION['erro'] = "Informe a cidade do cliente";
+        header('Location: ../cadastro-cidade.php');
+        exit();
+    }
+
+    if(!isset($sigla_estado) || $sigla_estado == ''){
+        $_SESSION['erro'] = "Informe a sigla do estado do cliente";
+        header('Location: ../cadastro-cidade.php');
+        exit();
+    }
+
+    if (isset($id) && $id != '') {
+        $sql = "UPDATE cidades SET cidade = ?, sigla_estado = ? WHERE id = ?";
+        $stmt = $conexao->prepare($sql);
+        $return = $stmt->execute([$cidade, $sigla_estado, $id]);
+
+        if ($return) {
+            $_SESSION['sucesso'] = "Cidade alterado com sucesso!";
+            header('Location: ../cadastro-cidade.php');
+            exit();
+        } else {
+            $_SESSION['erro'] = "Erro ao alterar o perfil da Cidade";
+            header('Location: ../cadastro-cidade.php');
+        }
+    } else {
+        $sql = "INSERT INTO cidades (cidade, sigla_estado) VALUES(?, ?)";
+        $stmt = $conexao->prepare($sql);
+        $return = $stmt->execute([$cidade, $sigla_estado]);
+
+        if ($return) {
+            $_SESSION['sucesso'] = "Cidade incluída com sucesso!";
+            header('Location: ../cadastro-cidade.php');
+            exit();
+        }
+    }
 }else {
     header('Location: ../index.php');
     exit();

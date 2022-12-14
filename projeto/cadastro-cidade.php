@@ -5,7 +5,7 @@ if (!isset($_SESSION['logado'])) {
 }
 //abrir conexão com o banco de dados
 $conexao = require('database/config.php');
-$cliente = null;
+$cidades = null;
 
 if (isset($_GET['id'])) {
     
@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
     $stmt->execute(); //Executa o SQL com os parâmetros passados acima
     $retorno = $stmt->fetch(PDO::FETCH_ASSOC); //armazena na variavel retorno, os dados obtidos da consulta
     if ($retorno) {
-        $cliente = $retorno;
+        $cidades = $retorno;
     }
 }
 ?>
@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinte</title>
+    <title>Cadastro Cidades</title>
 
     <?php include('componentes/js.php') ?>
    
@@ -42,24 +42,24 @@ if (isset($_GET['id'])) {
         <div class="row">
             <div class="col-sm-12">
 
-                    <form method="post" action="action/actions.php?tipo=cidade">
+                    <form method="post" action="action/actions.php?tipo=cidades">
 
                         <input type="hidden" class="form-control" name="id" 
-                        value="<?php echo ($cliente != null ? $cliente['id'] : '') ?>">
+                        value="<?php echo ($cidades != null ? $cidades['id'] : '') ?>">
 
                         <div class="row mb-2 mt-2">
                             <div class="col-sm-9 col-md-8 mb-2">
                                 <label>Nome da Cidade</label>
                                 <input type="text" class="form-control" 
                                 name="cidade" placeholder="NomeCidade"
-                                value="<?php echo ($cidade != null ? $cidade['cidade']:'') ?>">
+                                value="<?php echo ($cidades != null ? $cidades['cidade']:'') ?>">
                             </div>
 
                             <div class="col-sm-3 col-md-4 mb-2">
                                 <label>Sigla do Estado</label>
                                 <input type="text" class="form-control" 
                                 name="sigla_estado" placeholder="SiglaEstado"
-                                value="<?php echo ($cidade != null ? $cidade['sigla_estado']:'') ?>">
+                                value="<?php echo ($cidades != null ? $cidades['sigla_estado']:'') ?>">
                             </div>
                         </div>
                         <input class="btn btn-warning mb-2" value="Limpar" type="reset">

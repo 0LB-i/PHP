@@ -75,12 +75,25 @@ if (isset($_GET['id'])) {
                                 name="dataNascimento"
                                 value="<?php echo ($cliente != null ? $cliente['dataNascimento']:'') ?>">
                             </div>
-
-                            <div class="col-sm-6 col-md-4 mb-2">
-                                <label>ID Cidade</label>
-                                <input type="number" class="form-control"
-                                name="id_cidade" placeholder="Cidade"
-                                value="<?php echo ($cliente != null ? $cliente['id_cidade']:'') ?>">
+                            
+                            <div class="col-sm-6 col-md-4">
+                                <label>Cidade</label>
+                                <select class="form-control" name="id_cidade">
+                                    <?php 
+                                    $stmt = $conexao->prepare("SELECT id, cidade FROM cidades ORDER BY cidade");
+                                    $stmt->execute();
+                                    echo "<option value='0'>SELECIONE...</option>";
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                                        if ($cliente != null && $cliente['id_cidade'] == $row['id']) {
+                                            echo "<option selected value='" . $row['id'] . "'>" . 
+                                                $row['cidade'] . "</option>";
+                                        } else {
+                                            echo "<option value='" . $row['id'] . "'>" . $row['cidade'] .
+                                            "</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
 

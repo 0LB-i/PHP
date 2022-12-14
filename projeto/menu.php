@@ -16,7 +16,7 @@
                     <a class="nav-link" href="login.php">Login<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cadastro-cidade.php">Cadastro Cidades<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="lista-cidades.php">Lista Cidades<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
