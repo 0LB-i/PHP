@@ -3,17 +3,13 @@ session_start();
 if (!isset($_SESSION['logado'])) {
     header('Location: login.php');
 }
-
 //abrir conexão com o banco de dados
-
 $conexao = require('database/config.php');
-
 $cliente = null;
 
 if (isset($_GET['id'])) {
     
     $id = $_GET["id"];
-
 
     $sql = "SELECT * FROM clientes WHERE id = :id";
     $stmt = $conexao->prepare($sql);
@@ -24,13 +20,8 @@ if (isset($_GET['id'])) {
     if ($retorno) {
         $cliente = $retorno;
     }
-
-
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,13 +32,6 @@ if (isset($_GET['id'])) {
     <title>Clinte</title>
 
     <?php include('componentes/js.php') ?>
-
-    <style> 
-        .btn{
-            margin: 10px 10px 0 0;
-        }
-    </style>
-
    
 </head>
 <body>
@@ -56,28 +40,55 @@ if (isset($_GET['id'])) {
         <?php include('menu.php') ?>
         
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12">
 
                     <form method="post" action="action/actions.php?tipo=cliente">
 
                         <input type="hidden" class="form-control" name="id" 
                         value="<?php echo ($cliente != null ? $cliente['id'] : '') ?>">
 
-                        <label>Nome</label>
-                        <input type="text" class="form-control" 
-                        name="nome" placeholder="Nome"
-                        value="<?php echo ($cliente != null ? $cliente['nome']:'') ?>">
+                        <div class="row mb-2 mt-2">
+                            <div class="col-sm-6 col-md-4 mb-2">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" 
+                                name="nome" placeholder="Nome"
+                                value="<?php echo ($cliente != null ? $cliente['nome']:'') ?>">
+                            </div>
 
-                        <label>E-mail</label>
-                        <input type="email" class="form-control"
-                        name="email" placeholder="E-mail"
-                        value="<?php echo ($cliente != null ? $cliente['email']:'') ?>">
+                            <div class="col-sm-6 col-md-4 mb-2">
+                                <label>E-mail</label>
+                                <input type="email" class="form-control"
+                                name="email" placeholder="E-mail"
+                                value="<?php echo ($cliente != null ? $cliente['email']:'') ?>">
+                            </div>
 
-                        <input class="btn btn-warning" value="Limpar" type="reset">
-                        <button class="btn btn-primary" type="submit">Salvar</button>
+                            <div class="col-sm-6 col-md-4 mb-2">
+                                <label>Telefone</label>
+                                <input type="text" class="form-control"
+                                name="telefone" placeholder="Telefone"
+                                value="<?php echo ($cliente != null ? $cliente['telefone']:'') ?>">
+                            </div>
+
+                            <div class="col-sm-6 col-md-4 mb-2">
+                                <label>Data de Nascimento</label>
+                                <input type="date" class="form-control"
+                                name="dataNascimento"
+                                value="<?php echo ($cliente != null ? $cliente['dataNascimento']:'') ?>">
+                            </div>
+
+                            <div class="col-sm-6 col-md-4 mb-2">
+                                <label>ID Cidade</label>
+                                <input type="number" class="form-control"
+                                name="id_cidade" placeholder="Cidade"
+                                value="<?php echo ($cliente != null ? $cliente['id_cidade']:'') ?>">
+                            </div>
+                        </div>
+
+                        <input class="btn btn-warning mb-2" value="Limpar" type="reset">
+                        <button class="btn btn-primary mb-2 ms-2" type="submit">Salvar</button>
                     </form>
 
-                    <button class="btn btn-primary" onclick="confirmar_logout()">SAIR</button>
+                    <button class="btn btn-secondary" onclick="confirmar_logout()">SAIR</button>
             </div>
         </div>
     </div>    
