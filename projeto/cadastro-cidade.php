@@ -36,9 +36,9 @@ if (isset($_GET['id'])) {
 </head>
 <body>
     
+    <?php include('menu.php') ?>
+
     <div class="container">
-        <?php include('menu.php') ?>
-        
         <div class="row">
             <div class="col-sm-12">
 

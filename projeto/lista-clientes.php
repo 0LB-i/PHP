@@ -61,7 +61,7 @@ $conexao = require('./database/config.php');
                                         <i class="fa fa-edit"></i>
                                         </a>
 
-                                        <a class="btn btn-md btn-danger">
+                                        <a class="btn btn-md btn-danger" href="action/delete.php?id='.$row['id'] . '&tabela=clientes">
                                         <i class="fa fa-trash"></i>
                                         </a>
                                     </td>

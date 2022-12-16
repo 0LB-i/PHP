@@ -35,7 +35,7 @@ $conexao = require('./database/config.php');
         <div class="row">
             <div class="col-md-12">
 
-                <a class='btn btn-block btn-primary' href='cliente.php'>Nova cidade</a>
+                <a class='btn btn-block btn-primary' href='cadastro-cidade.php'>Nova cidade</a>
 
                 <table class="table">
                     <thead>

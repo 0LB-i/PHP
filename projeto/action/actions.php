@@ -63,7 +63,7 @@ if($tipo == 'cliente'){
             header('Location: ../lista-clientes.php');
         }
     } else {
-        $sql = "INSERT INTO clientes (nome, email, telefone, dataNascimento) VALUES(?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO clientes (nome, email, telefone, dataNascimento, id_cidade) VALUES(?, ?, ?, ?, ?)";
         $stmt = $conexao->prepare($sql);
         $return = $stmt->execute([$nome, $email, $telefone, $dataNascimento, $id_cidade]);
 
@@ -71,6 +71,9 @@ if($tipo == 'cliente'){
             $_SESSION['sucesso'] = "Cliente incluído com sucesso!";
             header('Location: ../lista-clientes.php');
             exit();
+        } else {
+            $_SESSION['erro'] = "Erro ao incluir o perfil do cliente";
+            header('Location: ../lista-clientes.php');
         }
     }   
 
@@ -111,7 +114,7 @@ if($tipo == 'cliente'){
 
         if ($return) {
             $_SESSION['sucesso'] = "Cidade incluída com sucesso!";
-            header('Location: ../cadastro-cidade.php');
+            header('Location: ../lista-cidades.php');
             exit();
         }
     }

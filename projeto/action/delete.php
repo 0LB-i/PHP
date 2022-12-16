@@ -6,12 +6,16 @@ $conexao = require('../database/config.php');
 $tabela = $_GET["tabela"];
 $chave = $_GET["id"];
 
-$sql = "UPDATE" . $tabela . " SET excluido = true WHERE id = ?";
+$sql = "DELETE FROM " . $tabela . " WHERE id = ?";
 $stmt = $conexao->prepare($sql);
 $return = $stmt->execute([$chave]);
 
-if ($return) {
+if ($return && $tabela == "cidades") {
     $_SESSION['sucesso'] = "Registro excluido com sucesso!";
-    header('Location: ../index.php');
+    header('Location: ../lista-cidades.php');
+    exit();
+} else if ($return && $tabela == "clientes") {
+    $_SESSION['sucesso'] = "Registro excluido com sucesso!";
+    header('Location: ../lista-clientes.php');
     exit();
 }
